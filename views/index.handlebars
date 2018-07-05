@@ -1,0 +1,18 @@
+<h1>Article Scrapings</h1>
+
+<button id="scrapeNew">Scrape New Articles</button>
+
+
+  {{#each articles}}
+    <div data-id={{this._id}}>
+      <p>{{this.title}}</p>
+      <p>{{this.summary}}</p>
+      <p>{{this.link}}</p>
+      <a href="/articles/{{this._id}}">View and Save Notes</a>
+    </div>
+  {{/each}}
+
+
+
+
+
