@@ -63,19 +63,35 @@ app.get("/scrape", function(req, res) {
         result.summary = $(this)
           .children(".summary")
           .text();
-          
         
-  
-        // Create a new Article using the `result` object built from scraping
-        db.Article.create(result)
-          .then(function(dbArticle) {
+        //function to create an article
+        //function createTheArticle() {
+            // Create a new Article using the `result` object built from scraping
+            db.Article.create(result)
+            .then(function(dbArticle) {
             // View the added result in the console
             console.log(dbArticle);
-          })
-          .catch(function(err) {
+            })
+            .catch(function(err) {
             // If an error occurred, send it to the client
             return res.json(err);
-          });
+            });
+
+        //};
+
+    
+        // //make sure the article isn't already in the db
+        // db.Article.find({}).then(function(articlesinDB){
+        //     var headlinesinDB = articlesinDB.map(function(article){
+        //         return article.title
+        //     });
+        //     if (headlinesinDB.includes(result.title)){
+        //         console.log("a repeat");
+        //     } else {
+        //         createTheArticle();
+        //     }
+        // });
+  
       });
   
       // If we were able to successfully scrape and save an Article, send a message to the client
