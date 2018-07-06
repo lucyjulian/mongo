@@ -20,6 +20,7 @@ $(document).ready(function () {
         .then(function(data) {
             // Log the response
             console.log(data);
+            document.location.reload();
             
 
             // Also, remove the values entered in the input and textarea for note entry
@@ -28,6 +29,18 @@ $(document).ready(function () {
         });
 
         
+    });
+
+    $(document).on("click", ".deleteNote", function() {
+        var thisId = $(this).attr("data-id");
+
+        $.ajax({
+            method: "PUT",
+            url: "/notes/" + thisId
+        }).then(function(response) {
+            console.log(response);
+            document.location.reload();
+        });
     });
 
 
@@ -39,6 +52,7 @@ $(document).ready(function () {
         })
         .then(function(data){
             console.log(data);
+            document.location.reload();
         })
     });
 });

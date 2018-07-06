@@ -16,9 +16,14 @@
         </div>
         <div class="card-body">
             {{#each article.note}}
-                <p>{{this.title}}</p>
-                <p>{{this.body}}</p>
-                
+                <div class="card">
+                    <div class="card-body">
+                        <button data-id={{this._id}} class="btn btn-danger btn-sm deleteNote" style="float: right;">Delete Note</button>
+                        <h5>{{this.title}}</h5>
+                        <p>{{this.body}}</p>
+                    </div>
+                </div>
+
             {{/each}}
         </div>
     </div>
