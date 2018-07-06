@@ -1,18 +1,13 @@
-<h1>Article Scrapings</h1>
-
-<button id="scrapeNew">Scrape New Articles</button>
-
-
-  {{#each articles}}
-    <div data-id={{this._id}}>
-      <p>{{this.title}}</p>
-      <p>{{this.summary}}</p>
-      <p>{{this.link}}</p>
-      <a href="/articles/{{this._id}}">View and Save Notes</a>
+<div class="container">
+   <div class="jumbotron">
+        <h1 class="display-4">Article Scraper</h1>
+        <p class="lead">This site is designed to scrape headlines from the New York Times. Users can then store notes associated with an article!</p>
+        <hr class="my-4">
+        <p>This app uses MongoDB to store it's data and is hosted through heroku.</p>
+        <a class="btn btn-primary btn-lg" href="/articles" role="button">Get Started</a>
     </div>
-  {{/each}}
 
+    <div class="row">
 
-
-
-
+    </div>
+</div>

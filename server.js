@@ -1,6 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-//var logger = require("morgan");
+
 var mongoose = require("mongoose");
 
 var request = require("request");
@@ -19,9 +19,6 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Use morgan logger for logging requests
-//app.use(logger("dev"));
-
 // Use body-parser for handling form submissions
 app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
@@ -36,6 +33,11 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 // Routes
+
+app.get("/", function(req, res){
+    res.render("index");
+});
+
 
 // A GET route for scraping the nytimes website
 app.get("/scrape", function(req, res) {
@@ -85,17 +87,9 @@ app.get("/scrape", function(req, res) {
 app.get("/articles", function (req, res) {
     db.Article.find({}, null, { sort: { '_id': -1 } }, function (error, data) {
       if (error) throw error;
-      res.render("index", { articles: data })
+      res.render("articles", { articles: data })
     });
 });
-// Route for getting all Articles from the db
-// app.get("/articles", function(res) {
-//     // Grab every document in the Articles collection
-//     db.Article.find({}, function(error, data) {
-//         if (error) throw error;
-//         res.render("index", { articles: data })
-//     });
-// });
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function(req, res) {

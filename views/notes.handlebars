@@ -1,26 +1,44 @@
-
-
-<div data-id={{article._id}}>
-    <p>{{article.title}}</p>
-    <p>{{article.summary}}</p>
-    <p>{{article.link}}</p>
-    {{#each article.note}}
-        <p>{{this.title}}</p>
-        <p>{{this.body}}</p>
-    {{/each}}
+<div class="container">
+    <div class="jumbotron">
+        <a href="/articles" class="btn btn-primary btn-lg center" style="float: right;">Back to Scrapings</a>
+        <div data-id={{article._id}}>
+            <h2>{{article.title}}</h2>
+            <p>{{article.summary}}</p>
+            <a href={{article.link}}>{{article.link}}</a>
+        </div>
+    </div>
 </div>
 
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Saved Notes:</h2>
+        </div>
+        <div class="card-body">
+            {{#each article.note}}
+                <p>{{this.title}}</p>
+                <p>{{this.body}}</p>
+                
+            {{/each}}
+        </div>
+    </div>
+    
+</div>
 
+<br>
 
-
-<form>
-    <h2>Create New Note</h2>
-    <input id="titleinput" name="title" placeholder="Title">
-    <input id="bodyinput" name="body" placeholder="Body">
-    <button type="submit" id="saveNote" data-id={{article._id}}>Save Note</button>
-</form>
-
-
-<a href="/articles">
-  <p>Back to scrapings</p>
-</a>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Create New Note</h2>
+        </div>
+        <div class="card-body">
+            
+            <input id="titleinput" style="width: 100%; margin-bottom: 10px;" name="title" placeholder="Title">
+            
+            <input id="bodyinput" style="width: 100%; padding-bottom: 100px; margin-bottom: 10px;" name="body" placeholder="Body">
+            <button type="submit" class="btn btn-primary" id="saveNote" data-id={{article._id}}>Save Note</button>
+        </div>
+    </div>
+    
+</div>

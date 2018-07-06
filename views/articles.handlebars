@@ -1,0 +1,34 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="jumbotron center">
+        <h1 class="display-4">Article Scraper</h1>
+        <p class="lead">This site is designed to scrape headlines from the New York Times. Users can then store notes associated with an article!</p>
+        <hr class="my-4">
+        <button class="btn btn-primary btn-lg" id="scrapeNew">Scrape New Articles</button>
+        
+    </div>
+  
+    
+  </div>
+</div>
+
+<div class="container center">
+  {{#each articles}}
+    <div class="card" style="width: 90%;">
+      <div class="card-body">
+        <div data-id={{this._id}}>
+          <h4 class="card-title">{{this.title}}</h4>
+          <p>{{this.summary}}</p>
+          <a href={{this.link}} style="font-size: 10px;">{{this.link}}</a>
+          <br>
+          <a href="/articles/{{this._id}}" class="btn btn-primary" style="float: right;">View and Save Notes<span class="glyphicon glyphicon-pencil"></span></a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+
+
